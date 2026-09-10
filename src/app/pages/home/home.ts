@@ -27,9 +27,9 @@ export class Home implements OnInit {
   gaseosa500 = 0;
   agua = 0;
 
-  precioHamburguesa = 6000;
+  precioHamburguesa = 7000;
   precioPerro = 6000;
-  precioArepa = 7000;
+  precioArepa = 8000;
 
   precioPapasPequenas = 2000;
   precioPapasGrandes = 5000;
