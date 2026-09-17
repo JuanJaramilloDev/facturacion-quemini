@@ -32,6 +32,11 @@
 
             <div class="detalles" [class.detalles-abierto]="selectedVentaId === venta.id">
 
+                <div *ngIf="venta.metodoPago" class="detalle-item">
+                    <span>💳 Método de pago</span>
+                    <strong>{{ venta.metodoPago === 'nequi' ? 'Nequi' : 'Efectivo' }}</strong>
+                </div>
+
                 <div *ngIf="venta.miniHamburguesas > 0" class="detalle-item">
                     <span>🍔 Mini Hamburguesa</span>
                     <strong>x{{ venta.miniHamburguesas }}</strong>

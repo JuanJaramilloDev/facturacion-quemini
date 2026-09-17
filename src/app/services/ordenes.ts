@@ -16,6 +16,7 @@ export interface Orden {
   total: number;
   fecha: Date;
   estado: 'activa' | 'entregada';
+  metodoPago?: 'nequi' | 'efectivo';
 }
 
 @Injectable({
@@ -102,7 +103,7 @@ export class OrdenesService {
     return this.historial;
   }
 
-  marcarComoEntregada(id: number) {
+  marcarComoEntregada(id: number, metodoPago: 'nequi' | 'efectivo') {
 
     const index = this.ordenes.findIndex(o => o.id === id);
 
@@ -111,6 +112,7 @@ export class OrdenesService {
       const orden = this.ordenes[index];
 
       orden.estado = 'entregada';
+      orden.metodoPago = metodoPago;
 
       this.ordenes.splice(index, 1);
       this.historial.push(orden);
