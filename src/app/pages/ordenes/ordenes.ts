@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrdenesService, Orden } from '../../services/ordenes';
 import { Router } from '@angular/router';
@@ -14,7 +14,11 @@ export class Ordenes {
 
   ordenes: Orden[] = [];
 
-  constructor(private ordenesService: OrdenesService, private router: Router) { }
+  constructor(
+    private ordenesService: OrdenesService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
     this.ordenes = this.ordenesService.obtenerOrdenes();
@@ -76,6 +80,8 @@ export class Ordenes {
 
     if (metodoPago) {
       this.ordenesService.marcarComoEntregada(id, metodoPago as 'nequi' | 'efectivo');
+      this.ordenes = this.ordenesService.obtenerOrdenes();
+      this.cdr.detectChanges();
     }
   }
 
