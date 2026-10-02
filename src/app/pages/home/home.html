@@ -19,6 +19,17 @@
                     <span>{{ miniHamburguesas }}</span>
                     <button type="button" class="btn-mas" (click)="aumentar('miniHamburguesas')">+</button>
                 </div>
+
+                @if (miniHamburguesas > 0) {
+                    <div class="opciones">
+                        <p class="opcion-titulo">Carne doble</p>
+                        <div class="contador">
+                            <button type="button" class="btn-menos" (click)="disminuir('hamburguesasDobles')">-</button>
+                            <span>{{ hamburguesasDobles }}</span>
+                            <button type="button" class="btn-mas" (click)="aumentar('hamburguesasDobles')">+</button>
+                        </div>
+                    </div>
+                }
             </div>
 
             <div class="pedido-card">

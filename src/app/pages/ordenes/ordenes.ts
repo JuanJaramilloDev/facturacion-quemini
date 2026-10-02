@@ -159,7 +159,8 @@ export class Ordenes {
   private obtenerLineasProducto(orden: Orden): { nombre: string; cantidad: number }[] {
 
     const items: { nombre: string; cantidad: number }[] = [
-      { nombre: 'Mini Hamburguesa', cantidad: orden.miniHamburguesas },
+      { nombre: 'Mini Hamburguesa', cantidad: orden.miniHamburguesas - (orden.hamburguesasDobles ?? 0) },
+      { nombre: 'Mini Hamb. Doble', cantidad: orden.hamburguesasDobles ?? 0 },
       { nombre: 'Mini Perro', cantidad: orden.miniPerros },
       { nombre: 'Mini Arepa', cantidad: orden.miniArepas },
       { nombre: 'Papas Pequeñas', cantidad: orden.papasPequenas },
@@ -215,38 +216,6 @@ export class Ordenes {
 
   eliminarOrden(id: number) {
 
-    /*Swal.fire({
-      title: '¿Eliminar orden?',
-      text: 'Esta acción no se puede deshacer.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, eliminar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#dc2626',
-      cancelButtonColor: '#6b7280',
-      background: '#2d2d2d',
-      color: '#ffffff',
-      width: '90%'
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-
-        this.ordenesService.eliminarOrden(id);
-
-        this.ordenes = this.ordenesService.obtenerOrdenes();
-
-        Swal.fire({
-          title: 'Eliminada',
-          text: 'La orden fue eliminada correctamente.',
-          icon: 'success',
-          confirmButtonColor: '#16a34a',
-          background: '#2d2d2d',
-          color: '#ffffff'
-        });
-
-      }
-
-    });*/
     const confirmar = confirm('¿Deseas eliminar esta orden?');
 
     if (confirmar) {

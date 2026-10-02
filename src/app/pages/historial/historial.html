@@ -15,7 +15,7 @@
                 <div class="venta-info">
                     <h2>Venta #{{ i + 1 }}</h2>
                     <h3>{{ venta.cliente }}</h3>
-                    <p>Total: ${{ venta.total }}</p>
+                    <p>Total: ${{ venta.total?.toLocaleString('es-CO') }}</p>
                 </div>
 
                 <button class="btn-detalles" (click)="toggleDetalles(venta.id)">
@@ -37,9 +37,14 @@
                     <strong>{{ venta.metodoPago === 'nequi' ? 'Nequi' : 'Efectivo' }}</strong>
                 </div>
 
-                <div *ngIf="venta.miniHamburguesas > 0" class="detalle-item">
+                <div *ngIf="venta.miniHamburguesas - (venta.hamburguesasDobles || 0) > 0" class="detalle-item">
                     <span>🍔 Mini Hamburguesa</span>
-                    <strong>x{{ venta.miniHamburguesas }}</strong>
+                    <strong>x{{ venta.miniHamburguesas - (venta.hamburguesasDobles || 0) }}</strong>
+                </div>
+
+                <div *ngIf="venta.hamburguesasDobles > 0" class="detalle-item">
+                    <span>🍔 Mini Hamburguesa (carne doble)</span>
+                    <strong>x{{ venta.hamburguesasDobles }}</strong>
                 </div>
 
                 <div *ngIf="venta.miniPerros > 0" class="detalle-item">
@@ -96,10 +101,6 @@
 
         <button class="btn-cerrar-dia" (click)="cerrarDia()">
             Cerrar Día
-        </button>
-
-        <button class="btn-imprimir">
-            Imprimir Día
         </button>
 
         <button class="btn-borrar" (click)="limpiarTodo()">

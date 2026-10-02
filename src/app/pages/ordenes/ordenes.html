@@ -59,9 +59,14 @@
 
             <div class="productos-lista">
 
-                <div *ngIf="orden.miniHamburguesas > 0" class="producto-item">
+                <div *ngIf="orden.miniHamburguesas - (orden.hamburguesasDobles || 0) > 0" class="producto-item">
                     <span>🍔 Mini Hamburguesa</span>
-                    <strong>x{{ orden.miniHamburguesas }}</strong>
+                    <strong>x{{ orden.miniHamburguesas - (orden.hamburguesasDobles || 0) }}</strong>
+                </div>
+
+                <div *ngIf="orden.hamburguesasDobles > 0" class="producto-item">
+                    <span>🍔 Mini Hamburguesa (carne doble)</span>
+                    <strong>x{{ orden.hamburguesasDobles }}</strong>
                 </div>
 
                 <div *ngIf="orden.miniPerros > 0" class="producto-item">

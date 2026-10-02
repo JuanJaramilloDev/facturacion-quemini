@@ -194,7 +194,6 @@
 
 /* BOTONES FINALES */
 
-.btn-imprimir,
 .btn-cerrar-dia,
 .btn-borrar {
     
@@ -204,11 +203,6 @@
     cursor: pointer;
     font-weight: 600;
     transition: .2s;
-}
-
-.btn-imprimir {
-    background: #2563eb;
-    color: white;
 }
 
 .btn-cerrar-dia {
@@ -221,9 +215,9 @@
 .btn-borrar {
     background: #dc2626;
     color: white;
+    grid-column: span 2;
 }
 
-.btn-imprimir:hover,
 .btn-cerrar-dia:hover,
 .btn-borrar:hover {
     transform: translateY(-2px);

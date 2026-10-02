@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrdenesService } from '../../services/ordenes';
-import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +15,7 @@ export class Home implements OnInit {
   numeroOrden = 0;
 
   miniHamburguesas = 0;
+  hamburguesasDobles = 0;
   miniPerros = 0;
   miniArepas = 0;
 
@@ -28,6 +28,7 @@ export class Home implements OnInit {
   agua = 0;
 
   precioHamburguesa = 7000;
+  precioHamburguesaDoble = 11000;
   precioPerro = 6000;
   precioArepa = 8000;
 
@@ -41,6 +42,10 @@ export class Home implements OnInit {
   editandoId: number | null = null;
 
   aumentar(campo: keyof Home) {
+    // No puede haber más dobles que hamburguesas
+    if (campo === 'hamburguesasDobles' && this.hamburguesasDobles >= this.miniHamburguesas) {
+      return;
+    }
     (this[campo] as number)++;
   }
 
@@ -48,11 +53,15 @@ export class Home implements OnInit {
     if ((this[campo] as number) > 0) {
       (this[campo] as number)--;
     }
+    if (this.hamburguesasDobles > this.miniHamburguesas) {
+      this.hamburguesasDobles = this.miniHamburguesas;
+    }
   }
 
   get total(): number {
     return (
-      this.miniHamburguesas * this.precioHamburguesa +
+      (this.miniHamburguesas - this.hamburguesasDobles) * this.precioHamburguesa +
+      this.hamburguesasDobles * this.precioHamburguesaDoble +
       this.miniPerros * this.precioPerro +
       this.miniArepas * this.precioArepa +
       this.papasPequenas * this.precioPapasPequenas +
@@ -72,6 +81,7 @@ export class Home implements OnInit {
       cliente: this.cliente,
 
       miniHamburguesas: this.miniHamburguesas,
+      hamburguesasDobles: this.hamburguesasDobles,
       miniPerros: this.miniPerros,
       miniArepas: this.miniArepas,
 
@@ -85,7 +95,8 @@ export class Home implements OnInit {
 
       total: this.total,
 
-      fecha: new Date()
+      fecha: new Date(),
+      estado: 'activa'
     };
 
     if (this.editandoId) {
@@ -122,14 +133,17 @@ export class Home implements OnInit {
       this.cliente = orden.cliente;
 
       this.miniHamburguesas = orden.miniHamburguesas;
+      this.hamburguesasDobles = orden.hamburguesasDobles ?? 0;
       this.miniPerros = orden.miniPerros;
       this.miniArepas = orden.miniArepas;
 
       this.papasPequenas = orden.papasPequenas;
       this.papasGrandes = orden.papasGrandes;
+      this.papasCombo = orden.papasCombo ?? 0;
 
       this.gaseosa250 = orden.gaseosa250;
       this.gaseosa500 = orden.gaseosa500;
+      this.agua = orden.agua ?? 0;
     }
   }
 }

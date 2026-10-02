@@ -45,9 +45,10 @@
     color: yellow;
   }
 
-  &--active {
-    border-bottom-color: var(--qm-yellow);
-  }
+}
+
+.qm-nav__link--active {
+  border-bottom-color: var(--qm-yellow);
 }
 
 @media (max-width: 600px) {

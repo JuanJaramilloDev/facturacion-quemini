@@ -2,12 +2,6 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    overflow-x: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .layout {
     display: flex;
     gap: 15px;
@@ -172,6 +166,30 @@ body {
     font-weight: bold;
     font-size: 1.1rem;
     min-width: 20px;
+}
+
+.opciones {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 208, 0, 0.4);
+    animation: desplegar .25s ease;
+}
+
+.opcion-titulo {
+    margin: 0;
+    color: #ffd000;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.opcion-titulo small {
+    color: #b3b3b3;
+    font-weight: 400;
+}
+
+@keyframes desplegar {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .total-pedido {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
@@ -9,6 +9,4 @@ import { Header } from './components/header/header';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  protected readonly title = signal('QueMini');
-}
+export class App {}

@@ -5,6 +5,7 @@ export interface Orden {
   numeroOrden: number;
   cliente: string;
   miniHamburguesas: number;
+  hamburguesasDobles: number;
   miniPerros: number;
   miniArepas: number;
   papasPequenas: number;
@@ -33,6 +34,7 @@ export class OrdenesService {
     if (typeof window !== 'undefined') {
       localStorage.setItem('ordenes', JSON.stringify(this.ordenes));
       localStorage.setItem('historial', JSON.stringify(this.historial));
+      localStorage.setItem('contadorOrdenes', this.contadorOrdenes.toString());
     }
   }
 
@@ -47,6 +49,7 @@ export class OrdenesService {
 
         this.ordenes = parsed.map((o: any) => ({
           ...o,
+          hamburguesasDobles: o.hamburguesasDobles ?? 0,
           fecha: new Date(o.fecha),
           estado: o.estado ?? 'activa'
         }));
@@ -54,7 +57,10 @@ export class OrdenesService {
       const historial = localStorage.getItem('historial');
 
       if (historial) {
-        this.historial = JSON.parse(historial);
+        this.historial = JSON.parse(historial).map((o: any) => ({
+          ...o,
+          hamburguesasDobles: o.hamburguesasDobles ?? 0
+        }));
       }
       const contador = localStorage.getItem('contadorOrdenes');
 
@@ -73,7 +79,6 @@ export class OrdenesService {
     };
 
     this.contadorOrdenes++;
-    localStorage.setItem('contadorOrdenes', this.contadorOrdenes.toString());
 
     this.ordenes.push(nuevaOrden);
 
@@ -135,10 +140,7 @@ export class OrdenesService {
       orden => orden.id !== id
     );
 
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('ordenes', JSON.stringify(this.ordenes)
-      );
-    }
+    this.guardar();
   }
 
   limpiarOrdenes() {
@@ -146,11 +148,7 @@ export class OrdenesService {
     this.historial = [];
     this.contadorOrdenes = 1;
 
-    localStorage.removeItem('contadorOrdenes');
-
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('historial');
-    }
+    this.guardar();
   }
 
   limpiarOrdenEditando() {

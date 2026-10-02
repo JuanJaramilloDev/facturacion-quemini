@@ -1,9 +1,8 @@
 <header class="qm-navbar">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="qm-logo">QueMini</div>
     <nav class="qm-nav">
-      <a class="qm-nav__link qm-nav__link--active" routerLink="/pedidos">PEDIDOS</a>
-      <a class="qm-nav__link" routerLink="/ordenes">ORDENES</a>
-      <a class="qm-nav__link" routerLink="/historial">HISTORIAL</a>
+      <a class="qm-nav__link" routerLink="/" routerLinkActive="qm-nav__link--active" [routerLinkActiveOptions]="{ exact: true }">PEDIDOS</a>
+      <a class="qm-nav__link" routerLink="/ordenes" routerLinkActive="qm-nav__link--active">ORDENES</a>
+      <a class="qm-nav__link" routerLink="/historial" routerLinkActive="qm-nav__link--active">HISTORIAL</a>
     </nav>
   </header>

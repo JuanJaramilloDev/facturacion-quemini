@@ -1,37 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --qm-yellow: #f5c200;
-  --qm-yellow-dark: #d4a900;
-  --qm-black: #111111;
-  --qm-white: #ffffff;
-  --qm-bg: #f2f2f2;
-  --qm-card-bg: #ffffff;
-  --qm-border: #e0e0e0;
-  --qm-text: #1a1a1a;
-  --qm-text-muted: #666666;
-  --qm-receipt-bg: #ffffff;
-  --qm-font-display: 'Oswald', 'Impact', sans-serif;
   --qm-font-body: 'DM Sans', 'Segoe UI', sans-serif;
-  --qm-radius: 6px;
-  --qm-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
 }
- 
-/* ─── Google Fonts import (add to styles.scss or index.html) ─── */
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=DM+Sans:wght@400;500;600&display=swap'); */
- 
+
 /* ─── Reset ─────────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
- 
-/* ─── App wrapper ────────────────────────────────────────── */
-.qm-app {
-  font-family: var(--qm-font-body);
-  background: var(--qm-bg);
-  min-height: 100vh;
-  color: var(--qm-text);
 }
 
 html, body {
