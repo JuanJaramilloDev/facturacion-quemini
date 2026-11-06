@@ -57,6 +57,11 @@
                     <strong>x{{ venta.miniArepas }}</strong>
                 </div>
 
+                <div *ngIf="venta.sandwiches > 0" class="detalle-item">
+                    <span>🥪 Sandwich</span>
+                    <strong>x{{ venta.sandwiches }}</strong>
+                </div>
+
                 <div *ngIf="venta.papasPequenas > 0" class="detalle-item">
                     <span>🍟 Papas Pequeñas</span>
                     <strong>x{{ venta.papasPequenas }}</strong>

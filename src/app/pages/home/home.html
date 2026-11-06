@@ -52,6 +52,16 @@
                 </div>
             </div>
 
+            <div class="pedido-card">
+                <img src="/img/sandwich.png">
+                <h2>Sandwich</h2>
+                <div class="contador">
+                    <button type="button" class="btn-menos" (click)="disminuir('sandwiches')">-</button>
+                    <span>{{ sandwiches }}</span>
+                    <button type="button" class="btn-mas" (click)="aumentar('sandwiches')">+</button>
+                </div>
+            </div>
+
         </section>
 
         <h2>ADICIONALES</h2>

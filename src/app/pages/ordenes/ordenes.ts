@@ -163,6 +163,7 @@ export class Ordenes {
       { nombre: 'Mini Hamb. Doble', cantidad: orden.hamburguesasDobles ?? 0 },
       { nombre: 'Mini Perro', cantidad: orden.miniPerros },
       { nombre: 'Mini Arepa', cantidad: orden.miniArepas },
+      { nombre: 'Sandwich', cantidad: orden.sandwiches ?? 0 },
       { nombre: 'Papas Pequeñas', cantidad: orden.papasPequenas },
       { nombre: 'Papas Grandes', cantidad: orden.papasGrandes },
       { nombre: 'Papas Combo', cantidad: orden.papasCombo },
@@ -198,6 +199,13 @@ export class Ordenes {
   get totalArepas(): number {
     return this.ordenes.reduce(
       (total, orden) => total + orden.miniArepas,
+      0
+    );
+  }
+
+  get totalSandwiches(): number {
+    return this.ordenes.reduce(
+      (total, orden) => total + (orden.sandwiches ?? 0),
       0
     );
   }

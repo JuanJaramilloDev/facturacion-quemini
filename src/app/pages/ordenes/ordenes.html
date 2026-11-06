@@ -19,6 +19,11 @@
             </div>
 
             <div class="contador">
+                <span>🥪</span>
+                <p> {{ totalSandwiches }}</p>
+            </div>
+
+            <div class="contador">
                 <span>🍟</span>
                 <p> {{ totalPapasGrandes }}</p>
             </div>
@@ -77,6 +82,11 @@
                 <div *ngIf="orden.miniArepas > 0" class="producto-item">
                     <span>🫓 Mini Arepa</span>
                     <strong>x{{ orden.miniArepas }}</strong>
+                </div>
+
+                <div *ngIf="orden.sandwiches > 0" class="producto-item">
+                    <span>🥪 Sandwich</span>
+                    <strong>x{{ orden.sandwiches }}</strong>
                 </div>
 
                 <div *ngIf="orden.papasPequenas > 0" class="producto-item">

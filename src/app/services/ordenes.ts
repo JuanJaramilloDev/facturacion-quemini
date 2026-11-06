@@ -8,6 +8,7 @@ export interface Orden {
   hamburguesasDobles: number;
   miniPerros: number;
   miniArepas: number;
+  sandwiches: number;
   papasPequenas: number;
   papasGrandes: number;
   papasCombo: number;
@@ -50,6 +51,7 @@ export class OrdenesService {
         this.ordenes = parsed.map((o: any) => ({
           ...o,
           hamburguesasDobles: o.hamburguesasDobles ?? 0,
+          sandwiches: o.sandwiches ?? 0,
           fecha: new Date(o.fecha),
           estado: o.estado ?? 'activa'
         }));
@@ -59,7 +61,8 @@ export class OrdenesService {
       if (historial) {
         this.historial = JSON.parse(historial).map((o: any) => ({
           ...o,
-          hamburguesasDobles: o.hamburguesasDobles ?? 0
+          hamburguesasDobles: o.hamburguesasDobles ?? 0,
+          sandwiches: o.sandwiches ?? 0
         }));
       }
       const contador = localStorage.getItem('contadorOrdenes');

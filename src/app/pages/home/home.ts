@@ -18,6 +18,7 @@ export class Home implements OnInit {
   hamburguesasDobles = 0;
   miniPerros = 0;
   miniArepas = 0;
+  sandwiches = 0;
 
   papasPequenas = 0;
   papasGrandes = 0;
@@ -27,16 +28,17 @@ export class Home implements OnInit {
   gaseosa500 = 0;
   agua = 0;
 
-  precioHamburguesa = 7000;
+  precioHamburguesa = 8000;
   precioHamburguesaDoble = 11000;
-  precioPerro = 6000;
-  precioArepa = 8000;
+  precioPerro = 7000;
+  precioArepa = 9000;
+  precioSandwich = 10000;
 
   precioPapasPequenas = 2000;
   precioPapasGrandes = 5000;
   precioPapasCombo = 4000;
 
-  precioGaseosa250 = 2000;
+  precioGaseosa250 = 2500;
   precioGaseosa500 = 4000;
   precioAgua = 1000;
   editandoId: number | null = null;
@@ -64,6 +66,7 @@ export class Home implements OnInit {
       this.hamburguesasDobles * this.precioHamburguesaDoble +
       this.miniPerros * this.precioPerro +
       this.miniArepas * this.precioArepa +
+      this.sandwiches * this.precioSandwich +
       this.papasPequenas * this.precioPapasPequenas +
       this.papasGrandes * this.precioPapasGrandes +
       this.papasCombo * this.precioPapasCombo +
@@ -84,6 +87,7 @@ export class Home implements OnInit {
       hamburguesasDobles: this.hamburguesasDobles,
       miniPerros: this.miniPerros,
       miniArepas: this.miniArepas,
+      sandwiches: this.sandwiches,
 
       papasPequenas: this.papasPequenas,
       papasGrandes: this.papasGrandes,
@@ -136,6 +140,7 @@ export class Home implements OnInit {
       this.hamburguesasDobles = orden.hamburguesasDobles ?? 0;
       this.miniPerros = orden.miniPerros;
       this.miniArepas = orden.miniArepas;
+      this.sandwiches = orden.sandwiches ?? 0;
 
       this.papasPequenas = orden.papasPequenas;
       this.papasGrandes = orden.papasGrandes;
